@@ -1,0 +1,183 @@
+perf list 
+
+sudo perf stat --repeat 10 -e cache-misses,cache-references,instructions,cycles ./test
+
+ref-cycles
+cache-references
+cache-misses
+mem-loads
+mem-stores 
+
+========================================================================================
+
+ Performance counter stats for './normal_store' (1000 runs):
+
+              3684      cache-misses              #    7.653 % of all cache refs      ( +-  3.62% )
+            4,8145      cache-references                                              ( +-  0.14% )
+           71,3018      instructions              #    0.81  insn per cycle           ( +-  0.04% )
+           87,8877      cycles                                                        ( +-  0.55% )
+           50,9173      ref-cycles                                                    ( +-  0.59% )
+                 0      mem-loads                                                   
+            8,6051      mem-stores                                                    ( +-  0.05% )
+
+        0.00035956 +- 0.00000355 seconds time elapsed  ( +-  0.99% )
+
+----------------------------------------------------------------------------------------
+
+ Performance counter stats for './opt_store' (1000 runs):
+
+              2371      cache-misses              #    4.919 % of all cache refs      ( +-  3.16% )
+            4,8192      cache-references                                              ( +-  0.13% )
+           71,2776      instructions              #    0.84  insn per cycle           ( +-  0.04% )
+           84,4032      cycles                                                        ( +-  0.27% )
+           47,9429      ref-cycles                                                    ( +-  0.29% )
+                 0      mem-loads                                                   
+            8,6055      mem-stores                                                    ( +-  0.05% )
+
+        0.00033333 +- 0.00000140 seconds time elapsed  ( +-  0.42% )
+
+========================================================================================
+
+ Performance counter stats for './normal_store' (100000 runs):
+
+              2172      cache-misses              #    4.597 % of all cache refs      ( +-  0.26% )
+            4,7256      cache-references                                              ( +-  0.01% )
+           71,2467      instructions              #    0.85  insn per cycle           ( +-  0.00% )
+           83,3951      cycles                                                        ( +-  0.02% )
+           47,6457      ref-cycles                                                    ( +-  0.04% )
+                 0      mem-loads                                                     ( +-  4.68% )
+            8,5965      mem-stores                                                    ( +-  0.00% )
+
+       0.000328804 +- 0.000000150 seconds time elapsed  ( +-  0.05% )
+
+----------------------------------------------------------------------------------------
+
+ Performance counter stats for './opt_store' (100000 runs):
+
+              2047      cache-misses              #    4.317 % of all cache refs      ( +-  0.27% )
+            4,7416      cache-references                                              ( +-  0.01% )
+           71,3257      instructions              #    0.85  insn per cycle           ( +-  0.07% )
+           83,5205      cycles                                                        ( +-  0.04% )
+           47,7950      ref-cycles                                                    ( +-  0.05% )
+                 0      mem-loads                                                     ( +-  4.84% )
+            8,6014      mem-stores                                                    ( +-  0.00% )
+
+        0.00034325 +- 0.00000775 seconds time elapsed  ( +-  2.26% )
+        
+========================================================================================
+
+ Performance counter stats for './opt_store' (100 runs):
+
+           19,4656      L1-dcache-loads                                               ( +-  0.12% )
+            1,4042      L1-dcache-load-misses     #    7.21% of all L1-dcache hits    ( +-  0.24% )
+            8,6271      L1-dcache-stores                                              ( +-  0.11% )
+
+        0.00032419 +- 0.00000350 seconds time elapsed  ( +-  1.08% )
+
+----------------------------------------------------------------------------------------
+
+ Performance counter stats for './normal_store' (100 runs):
+
+           19,4097      L1-dcache-loads                                               ( +-  0.12% )
+            1,4054      L1-dcache-load-misses     #    7.24% of all L1-dcache hits    ( +-  0.22% )
+            8,6072      L1-dcache-stores                                              ( +-  0.12% )
+
+        0.00042350 +- 0.00000292 seconds time elapsed  ( +-  0.69% )
+        
+========================================================================================
+array 1024
+
+ Performance counter stats for './opt_store_arr' (100 runs):
+
+           23,3280      L1-dcache-loads                                               ( +-  0.11% )
+            1,4786      L1-dcache-load-misses     #    6.34% of all L1-dcache hits    ( +-  0.18% )
+           10,6816      L1-dcache-stores                                              ( +-  0.10% )
+
+        0.00034444 +- 0.00000345 seconds time elapsed  ( +-  1.00% )
+
+----------------------------------------------------------------------------------------
+
+ Performance counter stats for './normal_store_arr' (100 runs):
+
+           25,8083      L1-dcache-loads                                               ( +-  0.12% )
+            1,5460      L1-dcache-load-misses     #    5.99% of all L1-dcache hits    ( +-  0.21% )
+           12,9397      L1-dcache-stores                                              ( +-  0.11% )
+
+        0.00035670 +- 0.00000351 seconds time elapsed  ( +-  0.98% )
+
+========================================================================================
+array 1024
+
+ Performance counter stats for './normal_store_arr' (100000 runs):
+
+              2181      cache-misses              #    4.377 % of all cache refs      ( +-  0.30% )  (96.44%)
+            4,9836      cache-references                                              ( +-  0.01% )
+           99,9699      instructions              #    1.04  insn per cycle           ( +-  0.02% )
+           96,2554      cycles                                                        ( +-  0.02% )
+           55,2244      ref-cycles                                                    ( +-  0.05% )
+                 0      mem-loads                                                     ( +-  4.89% )
+           12,9157      mem-stores                                                    ( +-  0.00% )
+     <not counted>      L1-dcache-loads                                               ( +-  1.23% )  (3.56%)
+     <not counted>      L1-dcache-load-misses                                         (0.00%)
+     <not counted>      L1-dcache-stores                                              (0.00%)
+
+        0.00036573 +- 0.00000205 seconds time elapsed  ( +-  0.56% )
+
+----------------------------------------------------------------------------------------
+
+ Performance counter stats for './opt_store_arr' (100000 runs):
+
+              2080      cache-misses              #    4.199 % of all cache refs      ( +-  0.28% )  (96.67%)
+            4,9542      cache-references                                              ( +-  0.01% )
+           84,8143      instructions              #    0.93  insn per cycle           ( +-  0.00% )
+           90,8443      cycles                                                        ( +-  0.02% )
+           51,9289      ref-cycles                                                    ( +-  0.04% )
+                 0      mem-loads                                                     ( +-  4.76% )
+           10,6788      mem-stores                                                    ( +-  0.00% )
+     <not counted>      L1-dcache-loads                                               ( +-  1.26% )  (3.33%)
+     <not counted>      L1-dcache-load-misses                                         (0.00%)
+     <not counted>      L1-dcache-stores                                              (0.00%)
+
+       0.000349281 +- 0.000000162 seconds time elapsed  ( +-  0.05% )
+
+========================================================================================
+array 1024 -O0
+
+ Performance counter stats for './normal_store_arr' (100000 runs):
+
+              2343      cache-misses              #    4.673 % of all cache refs      ( +-  0.28% )  (96.37%)
+            5,0143      cache-references                                              ( +-  0.01% )
+           99,9849      instructions              #    1.03  insn per cycle           ( +-  0.00% )
+           97,0846      cycles                                                        ( +-  0.02% )
+           55,8482      ref-cycles                                                    ( +-  0.05% )
+                 0      mem-loads                                                     ( +-  4.86% )
+           12,9219      mem-stores                                                    ( +-  0.00% )
+     <not counted>      L1-dcache-loads                                               ( +-  1.21% )  (3.63%)
+     <not counted>      L1-dcache-load-misses                                         (0.00%)
+     <not counted>      L1-dcache-stores                                              (0.00%)
+
+       0.000371690 +- 0.000000226 seconds time elapsed  ( +-  0.06% )
+
+----------------------------------------------------------------------------------------
+
+ Performance counter stats for './opt_store_arr' (100000 runs):
+
+              2303      cache-misses              #    4.654 % of all cache refs      ( +-  0.28% )  (96.63%)
+            4,9472      cache-references                                              ( +-  0.01% )
+           84,9043      instructions              #    0.93  insn per cycle           ( +-  0.06% )
+           91,1753      cycles                                                        ( +-  0.04% )
+           52,0356      ref-cycles                                                    ( +-  0.05% )
+                 0      mem-loads                                                     ( +-  4.81% )
+           10,6827      mem-stores                                                    ( +-  0.00% )
+     <not counted>      L1-dcache-loads                                               ( +-  1.29% )  (3.37%)
+     <not counted>      L1-dcache-load-misses                                         (0.00%)
+     <not counted>      L1-dcache-stores                                              (0.00%)
+
+       0.000352127 +- 0.000000180 seconds time elapsed  ( +-  0.05% )
+
+========================================================================================
+----------------------------------------------------------------------------------------
+
+========================================================================================
+----------------------------------------------------------------------------------------
+

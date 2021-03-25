@@ -1,0 +1,27 @@
+desc: (none)
+cmd: ./malloc_heap
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=141867
+mem_heap_B=261
+mem_heap_extra_B=19
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=141956
+mem_heap_B=269
+mem_heap_extra_B=35
+mem_stacks_B=0
+heap_tree=empty
