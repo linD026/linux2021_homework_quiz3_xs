@@ -195,7 +195,8 @@ xs *xs_trim(xs *x, const char *trimset) {
 // need change allocate
 bool xs_cow_copy(xs *dest, xs *src) {
   if (xs_is_ptr(src) && xs_is_large_string(src)) {
-    xs_free(dest);
+    if (!dest->sharing)
+      xs_free(dest);
     memcpy(dest, src, sizeof(xs));
     dest->sharing = true;
     xs_set_refcnt(dest, 1);
